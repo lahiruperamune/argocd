@@ -1,24 +1,11 @@
-apiVersion: kubernetes-client.io/v1
-kind: ExternalSecret
-metadata:
-  name: argocd-notifications-secret
-spec:
-  backendType: gcpSecretsManager
-  projectId: cognite-inso-sandbox
-  data:
-    - key: cognite-slack-token
-      name: slack-token
-      isBinary: false
-  stringData:
-      slack-token: <%= data.slack-token %>
-type: Opaque
-
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: argocd-notifications-cm
 data:
+  service.slack: |
+    token: xoxb-133430561632-3137841931543-WmMLhCIkqH8SM7ZWIcYjES6K
   trigger.sync-operation-change: |
     - when: app.status.operationState.phase in ['Succeeded']
       send: [github-commit-status]
