@@ -5,7 +5,7 @@ metadata:
   name: argocd-notifications-cm
 data:
   service.slack: |
-    token: xoxb-133430561632-3137841931543-WmMLhCIkqH8SM7ZWIcYjES6K
+    token: xoxb-133430561632-3137841931543-Hja0jmLf3X1gHBcatzohX1ws
   trigger.sync-operation-change: |
     - when: app.status.operationState.phase in ['Succeeded']
       send: [github-commit-status]
